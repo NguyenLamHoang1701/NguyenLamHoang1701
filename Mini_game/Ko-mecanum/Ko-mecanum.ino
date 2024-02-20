@@ -107,16 +107,16 @@ void loop() {
       else if (command == "R") goLeft();
       else if (command == "L") goRight();
 
-      else if (command == "0") speedCar = 400;
-      else if (command == "1") speedCar = 890;
-      else if (command == "2") speedCar = 1040;
-      else if (command == "3") speedCar = 1290;
-      else if (command == "4") speedCar = 1400;
-      else if (command == "5") speedCar = 1590;
-      else if (command == "6") speedCar = 1890;
-      else if (command == "7") speedCar = 2290;
-      else if (command == "8") speedCar = 2690;
-      else if (command == "9") speedCar = 3000 ;
+      else if (command == "0") speedCar = 210;
+      else if (command == "1") speedCar = 215;
+      else if (command == "2") speedCar = 220;
+      else if (command == "3") speedCar = 225;
+      else if (command == "4") speedCar = 230;
+      else if (command == "5") speedCar = 235;
+      else if (command == "6") speedCar = 240;
+      else if (command == "7") speedCar = 245;
+      else if (command == "8") speedCar = 250;
+      else if (command == "9") speedCar = 255 ;
       else if (command == "S") stopRobot();
 }
 
@@ -166,7 +166,7 @@ void HTTP_handleRoot(void) {
   html += "</head>";
   html += "<body>";
   html += "<h1>Tank Control</h1>";
-  html += "<p id='speedLabel'>Speed: 800</p>";
+  html += "<p id='speedLabel'>Speed: 6</p>";
   html += "<input type='range' id='speedSlider' min='1' max='9' step='1' value='5' oninput='updateSpeed()' />";
   html += "<br />";
   html += "<button onmousedown='startCommand(\"B\")' onmouseup='stopCommand()' ontouchstart='startCommand(\"B\")' ontouchend='stopCommand()'>Forward</button>";
