@@ -5,7 +5,7 @@
 String command;
 int speedCar = 800;
 
-const char* ssid = "heyy hey";
+const char* ssid = "A1 K58 TT";
 const char* password = "11111111";
 ESP8266WebServer server(80);
 
@@ -102,10 +102,10 @@ void loop() {
     server.handleClient();
     
       command = server.arg("State");
-      if (command == "B") goAhead();
-      else if (command == "F") goBack();
-      else if (command == "R") goLeft();
-      else if (command == "L") goRight();
+      if (command == "F") goAhead();
+      else if (command == "B") goBack();
+      else if (command == "L") goLeft();
+      else if (command == "R") goRight();
 
       else if (command == "0") speedCar = 210;
       else if (command == "1") speedCar = 215;
