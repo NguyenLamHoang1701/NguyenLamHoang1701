@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Animation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+  </style>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .typing-container {
+      text-align: center;
+      position: relative;
+    }
+
+    .line {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .typing-text {
+      font-size: 24px;
+      font-family: 'Inconsolata', monospace;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #fff;
+      animation: typing 2s steps(40, end), fadeIn 2s ease-out;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="typing-container">
+    <div class="line">
+      <p class="typing-text" id="typing-text-1"></p>
+    </div>
+    <div class="line">
+      <p class="typing-text" id="typing-text-2"></p>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const textElements = [
+        document.getElementById("typing-text-1"),
+        document.getElementById("typing-text-2")
+      ];
+
+      const textContents = [
+        "Hôm nay nhân ngày 8/3 chúng tôi, xin gửi lời chúc tới các bạn nữ 10A2                        ",
+        "             ngày càng xinh đẹp và có thật nhiều niềm vui trong cuộc sống nhoo!!"
+      ];
+
+      function typeText(index) {
+        textElements[index].textContent = textContents[index].slice(0, textElements[index].textContent.length + 1);
+        if (textElements[index].textContent.length < textContents[index].length) {
+          setTimeout(function () { typeText(index); }, 100);
+        } else {
+          if (index < textElements.length - 1) {
+            setTimeout(function () { typeText(index + 1); }, 2000);
+          } else {
+            setTimeout(function () {
+              redirectToAnotherPage();
+            }, 5000);
+          }
+        }
+      }
+
+      typeText(0);
+    });
+
+    function redirectToAnotherPage() {
+      // Thay đổi đường dẫn sau khi tự động chuyển trang sau 4 giây
+      window.location.href = "h3.html";
+    }
+  </script>
+</body>
+</html>

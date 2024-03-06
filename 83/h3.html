@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Button Animation</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .custom-button {
+      padding: 15px 30px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .custom-button:hover {
+      transform: scale(1.1);
+    }
+
+    .custom-button:active {
+      transform: rotate(360deg);
+    }
+  </style>
+</head>
+<body>
+  <button class="custom-button" onclick="redirectToH2()">Click me</button>
+  <script>
+    function redirectToH2() {
+      // Thay đổi đường dẫn sau khi click vào nút
+      window.location.href = "h2.html";
+    }
+  </script>
+</body>
+</html>
