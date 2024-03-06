@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .content-container {
+            background-color: #000000;
+            /* Màu đen */
+            padding: 20px;
+            width: 1250px;
+            height: 580px;
+            position: absolute;
+            left: 20px;
+            top: 10px;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            color: #ffffff;
+            white-space: nowrap;
+            overflow: hidden;
+            word-wrap: break-word;
+            /* Thêm thuộc tính này để xuống dòng khi vượt quá khung */
+            direction: rtl;
+            /* Chạy từ bên phải qua trái */
+        }
+
+        .button1 {
+            
+
+            cursor: pointer;
+            background-color: transparent;
+            outline: none;
+            border: 0;
+            padding: 15px 30px;
+            border-radius: 4px;
+            position: absolute;
+            font-family: "Poppins", sans-serif;
+            color: white;
+            top:92%;
+            left:45%;
+            font-size: 18px;
+            
+        }
+
+        .button1:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: auto;
+            right: 0;
+            z-index: 999;
+            transition:  all 0.2s linear;
+            width: 0;
+            border-radius: 4px;
+            
+            
+            
+            height: 100%;
+            
+            background-color: #6a5af9;
+            
+        }
+
+        .button1:hover:before {
+            
+            left: auto;
+            width: 100%;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-container">
+        <div class="gray-box">
+            <p class="text" id="animated-text"></p>
+        </div>
+        <button class="button1" onclick="redirectToH1()">Tiếp tục</button>
+    </div>
+
+    <script>
+        const textElement = document.getElementById('animated-text');
+        const buttonContainer = document.getElementById('buttonContainer');
+
+        const textContent = "Đây là đoạn chữ trong khung màu xám. Đoạn chữ sẽ tự động xuống dòng khi vượt quá khung. ";
+        let index = 0;
+
+        function animateText() {
+            if (index < textContent.length) {
+                textElement.textContent += textContent[index];
+                index++;
+                setTimeout(animateText, 150);
+            } else {
+                // Khi dòng chữ chạy xong, hiển thị button ngay lập tức
+                button1.style.display = 'block';
+            }
+        }
+
+        animateText();
+
+        function redirectToH1() {
+            // Chờ thêm 1 phút (60000 ms) sau khi click button để chuyển hướng tới h1.html
+            setTimeout(() => {
+                window.location.href = 'h1.html';
+            }, 0);
+        }
+    </script>
+</body>
+
+</html>
