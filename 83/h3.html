@@ -3,41 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Button Animation</title>
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
-
-    .custom-button {
-      padding: 15px 30px;
-      font-size: 16px;
-      background-color: #3498db;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .custom-button:hover {
-      transform: scale(1.1);
-    }
-
-    .custom-button:active {
-      transform: rotate(360deg);
-    }
-  </style>
+  <title>Document</title>
 </head>
+<style>
+    body {
+      background-color: #A9A9A9;
+      margin: 0;
+    }
+    .myVideo {
+      z-index: 1200;
+    }
+    .p1 {
+      z-index: 1000;
+      color: white;
+      position: absolute;
+      left: 25%;
+      top: 10px;
+      font-size: 50px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .bt1 {
+      cursor: pointer;
+      background-color: transparent;
+      outline: none;
+      border: 0;
+      padding: 15px 30px;
+      border-radius: 4px;
+      position: absolute;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      top: 91%;
+      left: 37%;
+      font-size: 26px;
+      height: 54px;
+      width: 355px;
+    }
+
+    .bt1:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: auto;
+      right: 0;
+      z-index: 999;
+      transition: all 0.3s linear;
+      width: 0;
+      border-radius: 4px;
+      height: 100%;
+      background-color: #D3D3D3;
+    }
+
+    .bt1:hover:before {
+      left: 0;
+      width: 100%;
+      right: auto;
+    }
+</style>
 <body>
-  <button class="custom-button" onclick="redirectToH2()">Click me</button>
+  <p class="p1">Gòi gòi xem vid này điiii, siu hay lun</p>
+  <video id="myVideo" autoplay controls>
+    <source src="m.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <button class="bt1" onclick="playVideo()">Tiếp tục</button>
+
   <script>
-    function redirectToH2() {
-      // Thay đổi đường dẫn sau khi click vào nút
+    document.addEventListener("DOMContentLoaded", function() {
+      var video = document.getElementById("myVideo");
+
+      setTimeout(function() {
+        video.style.display = "block";
+        video.play();
+
+        // Go fullscreen when the video starts playing
+        video.addEventListener('play', function() {
+          if (video.requestFullscreen) {
+            video.requestFullscreen();
+          } else if (video.mozRequestFullScreen) {
+            video.mozRequestFullScreen();
+          } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+          }
+        });
+
+        // Redirect after video ends
+        setTimeout(function() {
+          window.location.href = "h2.html";
+        }, (video.duration * 1000) + 3000);
+      }, 3000);
+    });
+
+    function playVideo() {
+      var video = document.getElementById("myVideo");
+      video.pause();
       window.location.href = "h2.html";
     }
   </script>
